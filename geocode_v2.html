@@ -14,22 +14,9 @@
     
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=weather"></script>
     <script>
-//Simple Map	
-var map;
-function initialize1() {
-  var mapOptions = {
-    zoom: 8,
-    center: new google.maps.LatLng(33.45,-84.23)
-  };
-  map = new google.maps.Map(document.getElementById('map-canvas'),
-      mapOptions);
-}
 
-google.maps.event.addDomListener(window, 'load', initialize1);
-
-
-//Start of Weather API
-function initialize2() {
+//Start of Weather Layer
+function initialize() {
   var mapOptions = {
     zoom: 6,
     center: new google.maps.LatLng(33.45,-84.23)
@@ -45,19 +32,8 @@ function initialize2() {
 
   var cloudLayer = new google.maps.weather.CloudLayer();
   cloudLayer.setMap(map);
-}
 
-google.maps.event.addDomListener(window, 'load', initialize2);
-
-///The beginning of the zoom marker
-function initialize3() {
-  var mapOptions = {
-    zoom: 4,
-    center: new google.maps.LatLng(33.45,-84.23)
-  };
-
-  var map = new google.maps.Map(document.getElementById('map-canvas'),
-      mapOptions);
+//Zoom Marker
 
   var marker = new google.maps.Marker({
     position: map.getCenter(),
@@ -77,10 +53,12 @@ function initialize3() {
     map.setZoom(8);
     map.setCenter(marker.getPosition());
   });
+  
 }
 
-google.maps.event.addDomListener(window, 'load', initialize3);
-    </script>
+google.maps.event.addDomListener(window, 'load', initialize);
+
+  </script>
   </head>
   <body>
     <div id="map-canvas"></div>
